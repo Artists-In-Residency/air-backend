@@ -94,7 +94,7 @@ app.get('/listings/:listingID', async(req, res) => {
 });
 
 //edit listing
-app.put('/listing', async(req, res) => {
+app.put('/listings', async(req, res) => {
     // using req.body instead of req.params or req.query (which belong to /GET requests)
     try {
         console.log(req.body);
