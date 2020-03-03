@@ -43,6 +43,23 @@ async function run() {
                     user_id INTEGER,
                     is_grant BOOLEAN
             );
+                CREATE TABLE favorites (
+                    id SERIAL PRIMARY KEY NOT NULL,
+                    program_name VARCHAR(256),
+                    address VARCHAR(256),
+                    city VARCHAR(256),
+                    state VARCHAR(2),
+                    zip_code INTEGER,
+                    country VARCHAR(256),
+                    continent VARCHAR(256),
+                    phone_num VARCHAR(20), 
+                    email VARCHAR(256),
+                    art_medium VARCHAR(256),
+                    img_url VARCHAR(600),
+                    link_url VARCHAR(600),
+                    description VARCHAR(256),
+                    user_id INTEGER NOT NULL REFERENCES users(id)
+            );
         `);
 
         console.log('create tables complete');
