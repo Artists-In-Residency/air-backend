@@ -72,7 +72,7 @@ app.get('/listings', async (req, res) => {
             error: err.message || err
         });
     }
-
+});
 
 // before ensure auth, but after other middleware:
 // app.use('/api/auth', authRoutes);

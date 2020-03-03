@@ -2,11 +2,12 @@
   "name": "air-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
@@ -37,5 +38,8 @@
     "pg": "^7.18.2",
     "superagent": "^5.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "nodemon": "^1.19.4"
+  }
 }
