@@ -59,7 +59,8 @@ async function run() {
                     img_url VARCHAR(600),
                     link_url VARCHAR(600),
                     description VARCHAR(256),
-                    user_id INTEGER NOT NULL REFERENCES users(id)
+                    user_id INTEGER NOT NULL REFERENCES users(id),
+                    is_grant BOOLEAN
             );
         `);
 

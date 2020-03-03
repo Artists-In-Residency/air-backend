@@ -134,7 +134,6 @@ app.post('/api/me/favorites', async(req, res) => {
 });
 
 //API ROUTES!!!
-// *** TODOS ***
 app.get('/listings', async(req, res) => {
 
     try {
@@ -275,6 +274,24 @@ app.put('/listings/:listingID', async(req, res) => {
         );
 
         res.json(result.rows[0]); // return just the first result of our query
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//delete listing
+app.delete('/api/me/listings/:listingID', async(req, res) => {
+    try {
+        const result = await client.query(`
+        DELETE FROM air_listings
+        WHERE id = ${req.params.listingID} 
+        `);
+
+        res.json(result.rows);
     }
     catch (err) {
         console.log(err);
