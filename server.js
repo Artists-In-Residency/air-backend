@@ -94,7 +94,7 @@ app.get('/listings/:listingID', async(req, res) => {
 });
 
 //edit listing
-app.put('/listings', async(req, res) => {
+app.put('/listings/:listingID', async(req, res) => {
     // using req.body instead of req.params or req.query (which belong to /GET requests)
     try {
         console.log(req.body);
@@ -117,7 +117,7 @@ app.put('/listings', async(req, res) => {
                 user_id = '${req.body.user_id}',
                 is_grant = '${req.body.is_grant}'
 
-            WHERE id = ${req.body.id};
+            WHERE id = ${req.params.listingID};
         `,
         );
 
