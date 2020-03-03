@@ -7,7 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
+    "create-tables": "node data/create-tables.js",
+    "drop-tables": "node data/drop-tables.js",
+    "load-seed-data": "node data/load-seed-data.js",
+    "recreate-tables": "npm run drop-tables && npm run create-tables",
+    "setup-db": "npm run recreate-tables && npm run load-seed-data"
   },
   "repository": {
     "type": "git",
@@ -29,5 +36,6 @@
     "morgan": "^1.9.1",
     "pg": "^7.18.2",
     "superagent": "^5.2.2"
-  }
+  },
+  "devDependencies": {}
 }
