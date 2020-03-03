@@ -24,7 +24,7 @@ async function run() {
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL,
                     display_name VARCHAR(256) NOT NULL,
-                    is_admin BOOLEAN NOT NULL DEFAULT FALSE
+                    is_admin BOOLEAN DEFAULT FALSE
                 );           
                 CREATE TABLE air_listings (
                     id SERIAL PRIMARY KEY NOT NULL,
