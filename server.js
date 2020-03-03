@@ -152,12 +152,88 @@ app.get('/listings', async(req, res) => {
     }
 });
 
-app.get('/listings/:listingID', async(req, res) => {
+// app.get('/listings/:listingID', async(req, res) => {
+//     try {
+//         const result = await client.query(`
+//             SELECT *
+//             FROM air_listings
+//             WHERE id = ${req.params.listingID}
+//         `);
+
+//         res.json(result.rows);
+//     }
+//     catch (err) {
+//         console.log(err);
+//         res.status(500).json({
+//             error: err.message || err
+//         });
+//     }
+// });
+
+//get by state
+app.get('/listings/state/:stateID', async(req, res) => {
     try {
         const result = await client.query(`
             SELECT *
             FROM air_listings
-            WHERE id = ${req.params.listingID}
+            WHERE state = '${req.params.stateID}'
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//get by city
+app.get('/listings/city/:cityID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings
+            WHERE city = '${req.params.cityID}'
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//get by country
+app.get('/listings/country/:countryID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings
+            WHERE country = '${req.params.countryID}'
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//get by program name, needs WHOLE program name
+app.get('/listings/program/:programID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings
+            WHERE program_name = '${req.params.programID}'
         `);
 
         res.json(result.rows);
