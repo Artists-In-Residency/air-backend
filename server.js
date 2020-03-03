@@ -152,23 +152,23 @@ app.get('/listings', async(req, res) => {
     }
 });
 
-// app.get('/listings/:listingID', async(req, res) => {
-//     try {
-//         const result = await client.query(`
-//             SELECT *
-//             FROM air_listings
-//             WHERE id = ${req.params.listingID}
-//         `);
+app.get('/listings/:listingID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings
+            WHERE id = ${req.params.listingID}
+        `);
 
-//         res.json(result.rows);
-//     }
-//     catch (err) {
-//         console.log(err);
-//         res.status(500).json({
-//             error: err.message || err
-//         });
-//     }
-// });
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
 
 //get by state
 app.get('/listings/state/:stateID', async(req, res) => {
