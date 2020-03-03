@@ -6,6 +6,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const client = require('./lib/client.js');
+const request = require('superagent');
+
 // Initiate database connection
 client.connect();
 
@@ -56,10 +58,9 @@ app.use(express.urlencoded({ extended:true })); //security parsing an encoded ur
 
 //API ROUTES!!!
 // *** TODOS ***
-app.get('/listings', async (req, res) => {
+app.get('/listings', async(req, res) => {
 
     try {
-
         const result = await client.query(`
             SELECT * FROM air_listings 
         `,);
@@ -72,6 +73,68 @@ app.get('/listings', async (req, res) => {
             error: err.message || err
         });
     }
+});
+
+app.get('/listings/:listingID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings
+            WHERE id = ${req.params.listingID}
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//edit listing
+app.put('/listing', async(req, res) => {
+    // using req.body instead of req.params or req.query (which belong to /GET requests)
+    try {
+        console.log(req.body);
+        // make a new cat out of the cat that comes in req.body;
+        const result = await client.query(`
+            UPDATE air_listings
+            SET program_name = '${req.body.program_name}', 
+                address = '${req.body.address}', 
+                city = '${req.body.city}', 
+                state = '${req.body.state}',
+                zip_code = '${req.body.zip_code}',
+                country = '${req.body.country}',
+                continent = '${req.body.continent}',
+                phone_num = '${req.body.phone_num}',
+                email = '${req.body.email}',
+                art_medium = '${req.body.art_medium}',
+                img_url = '${req.body.img_url}',
+                link_url = '${req.body.link_url}',
+                description = '${req.body.description}',
+                user_id = '${req.body.user_id}',
+                is_grant = '${req.body.is_grant}'
+
+            WHERE id = ${req.body.id};
+        `,
+        );
+
+        res.json(result.rows[0]); // return just the first result of our query
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+app.get('/api/geocode', async(req, res) => {
+    const data = await request.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.search}&key=${process.env.GOOGLE_MAPS_API_KEY}`);
+
+    res.json(data.body);
 });
 
 // before ensure auth, but after other middleware:

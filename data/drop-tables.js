@@ -19,6 +19,7 @@ async function run() {
     
         await client.query(`
             DROP TABLE IF EXISTS air_listings;
+            DROP TABLE IF EXISTS favorites;
             DROP TABLE IF EXISTS users;
         `);
 
