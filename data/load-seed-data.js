@@ -12,10 +12,10 @@ async function run() {
         await client.connect();
 
         await client.query(`
-                    INSERT INTO users (email, hash)
-                    VALUES ($1, $2)
+                    INSERT INTO users (email, hash, display_name)
+                    VALUES ($1, $2, $3)
        `,
-        ['mysweeetemail@gmail.com', 'supersecrettokenmofo']);
+        ['mysweeetemail@gmail.com', 'supersecrettokenmofo', 'Mikey']);
 
         await Promise.all(
             data.map(listing => {
