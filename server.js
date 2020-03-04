@@ -533,7 +533,7 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
 //     try {
 //         const result = await client.query(`
 //         DELETE FROM air_listings
-//         WHERE id = ${req.params.listingID} 
+//         WHERE id = ${req.params.listingID} es
 //         `);
 
 //         res.json(result.rows);
@@ -553,6 +553,26 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
         DELETE FROM air_listings
         WHERE id = ${req.params.listingID} AND user_id=$1; 
         `, [req.userId]);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//Get SEARCH all listings
+app.get('/search', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings 
+            WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
+            ILIKE '%${req.query.search}%';
+        `);
 
         res.json(result.rows);
     }
