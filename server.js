@@ -365,11 +365,13 @@ app.post('/api/me/listings', async(req, res) => {
             img_url,
             link_url,
             description,
-            is_grant
+            is_grant,
+            lat,
+            long
         } = req.body;
 
         const newListing = await client.query(`
-            INSERT INTO air_listings (program_name, address, city, state, zip_code, country, continent, phone_num, email, art_medium, img_url, link_url, description, user_id, is_grant)
+            INSERT INTO air_listings (program_name, address, city, state, zip_code, country, continent, phone_num, email, art_medium, img_url, link_url, description, user_id, is_grant, lat, long)
             values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
             returning *
         `, [
@@ -387,7 +389,9 @@ app.post('/api/me/listings', async(req, res) => {
             link_url,
             description,
             req.userId,
-            is_grant
+            is_grant,
+            lat,
+            long
         ]);
 
         res.json(newListing.rows[0]);
@@ -418,7 +422,9 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
             img_url = '${req.body.img_url}',
             link_url = '${req.body.link_url}',
             description = '${req.body.description}',
-            is_grant = '${req.body.is_grant}'
+            is_grant = '${req.body.is_grant}',
+            lat = '${req.body.lat}',
+            long = '${req.body.long}'
             
             WHERE id = ${req.params.listingID} AND user_id=$1;
         `, [req.userId]
@@ -532,7 +538,9 @@ app.put('/api/me/admin/listings/:listingID', async(req, res) => {
                 img_url = '${req.body.img_url}',
                 link_url = '${req.body.link_url}',
                 description = '${req.body.description}',
-                is_grant = '${req.body.is_grant}'
+                is_grant = '${req.body.is_grant}',
+                lat = '${req.body.lat}',
+                long = '${req.body.long}'
 
             WHERE id = ${req.params.listingID};
         `,
