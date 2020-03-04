@@ -491,7 +491,7 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
 // });
 
 // //Will be ADMIN edit listing
-app.put('/api/me/listings/:listingID', async(req, res) => {
+app.put('/api/me/admin/listings/:listingID', async(req, res) => {
     // using req.body instead of req.params or req.query (which belong to /GET requests)
     try {
         console.log(req.body);
@@ -511,7 +511,6 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
                 img_url = '${req.body.img_url}',
                 link_url = '${req.body.link_url}',
                 description = '${req.body.description}',
-                user_id = '${req.body.user_id}',
                 is_grant = '${req.body.is_grant}'
 
             WHERE id = ${req.params.listingID};
