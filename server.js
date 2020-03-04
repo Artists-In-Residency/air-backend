@@ -213,6 +213,27 @@ app.get('/listings', async(req, res) => {
     }
 });
 
+
+
+//Some listings Get page route
+app.get('/listings/page/:pageID', async(req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT * FROM air_listings
+            LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20
+        `,);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 //All listing Get by id route
 app.get('/listings/:listingID', async(req, res) => {
     try {
