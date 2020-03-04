@@ -42,7 +42,9 @@ async function run() {
                     link_url VARCHAR(600),
                     description VARCHAR(256),
                     user_id INTEGER,
-                    is_grant BOOLEAN
+                    is_grant BOOLEAN,
+                    lat VARCHAR(256),
+                    long VARCHAR(256)
             );
                 CREATE TABLE favorites (
                     id SERIAL PRIMARY KEY NOT NULL,
@@ -60,7 +62,9 @@ async function run() {
                     link_url VARCHAR(600),
                     description VARCHAR(256),
                     user_id INTEGER NOT NULL REFERENCES users(id),
-                    is_grant BOOLEAN
+                    is_grant BOOLEAN,
+                    lat VARCHAR(256),
+                    long VARCHAR(256)
             );
         `);
 
