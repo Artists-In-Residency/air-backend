@@ -372,7 +372,7 @@ app.post('/api/me/listings', async(req, res) => {
 
         const newListing = await client.query(`
             INSERT INTO air_listings (program_name, address, city, state, zip_code, country, continent, phone_num, email, art_medium, img_url, link_url, description, user_id, is_grant, lat, long)
-            values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+            values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
             returning *
         `, [
             program_name, 
@@ -593,13 +593,14 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
 });
 
 //Get SEARCH all listings
-app.get('/search', async(req, res) => {
+app.get('/search/:pageID', async(req, res) => {
     try {
         const result = await client.query(`
             SELECT *
             FROM air_listings 
             WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
-            ILIKE '%${req.query.search}%';
+            ILIKE '%${req.query.search}%'
+            LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
         `);
 
         res.json(result.rows);
@@ -611,6 +612,25 @@ app.get('/search', async(req, res) => {
         });
     }
 });
+
+// //Some listings Get page route
+// app.get('/listings/page/:pageID', async(req, res) => {
+
+//     try {
+//         const result = await client.query(`
+//             SELECT * FROM air_listings
+//             LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20
+//         `,);
+
+//         res.json(result.rows);
+//     }
+//     catch (err) {
+//         console.log(err);
+//         res.status(500).json({
+//             error: err.message || err
+//         });
+//     }
+// });
 
 app.get('/api/me/geocode', async(req, res) => {
     const data = await request.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.search}&key=${process.env.GOOGLE_MAPS_API_KEY}`);
