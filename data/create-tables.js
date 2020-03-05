@@ -32,7 +32,7 @@ async function run() {
                     address VARCHAR(256),
                     city VARCHAR(256),
                     state VARCHAR(2),
-                    zip_code INTEGER,
+                    zip_code VARCHAR(256),
                     country VARCHAR(256),
                     continent VARCHAR(256),
                     phone_num VARCHAR(20), 
