@@ -616,8 +616,7 @@ app.get('/search', async(req, res) => {
         console.log(req.query.search);
         const result = await client.query(`
             SELECT * FROM air_listings 
-            WHERE id ILIKE '%${req.query.search}%'
-            OR program_name ILIKE '%${req.query.search}%'
+            WHERE program_name ILIKE '%${req.query.search}%'
             OR city ILIKE '%${req.query.search}%' 
             OR state ILIKE '%${req.query.search}%' 
             OR zip_code ILIKE '%${req.query.search}%' 
