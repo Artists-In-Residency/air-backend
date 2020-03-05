@@ -15,7 +15,7 @@ async function run() {
                     INSERT INTO users (email, hash, display_name)
                     VALUES ($1, $2, $3)
        `,
-        ['mysweeetemail@gmail.com', 'supersecrettokenmofo', 'Mikey']);
+        ['test@test.com', 'test', 'Testy']);
 
         await Promise.all(
             data.map(listing => {
