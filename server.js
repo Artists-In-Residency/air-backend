@@ -157,6 +157,25 @@ app.post('/api/me/favorites', async(req, res) => {
     }
 });
 
+//get favorites by user ID - for front page
+app.get('/favorites/:userID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM favorites
+            WHERE user_id = '${req.params.userID}'
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 
 //Dev Get Users Route
 app.get('/users', async(req, res) => {
