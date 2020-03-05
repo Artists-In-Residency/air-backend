@@ -64,7 +64,8 @@ async function run() {
                     user_id INTEGER NOT NULL REFERENCES users(id),
                     is_grant BOOLEAN,
                     lat VARCHAR(256),
-                    long VARCHAR(256)
+                    long VARCHAR(256),
+                    unique (user_id, program_name)
             );
         `);
 

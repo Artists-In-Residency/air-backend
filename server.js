@@ -272,6 +272,24 @@ app.get('/listings/state/:stateID', async(req, res) => {
     }
 });
 
+//get distinct from US states
+app.get('/listings/state/dropdown/:id', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT DISTINCT state
+            FROM air_listings
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 //get by city
 app.get('/listings/city/:cityID', async(req, res) => {
     try {
