@@ -613,9 +613,9 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
 //Get SEARCH all listings
 app.get('/search', async(req, res) => {
     try {
+        console.log(req.query.search);
         const result = await client.query(`
-            SELECT *
-            FROM air_listings 
+            SELECT * FROM air_listings 
             WHERE id ILIKE '%${req.query.search}%'
             OR program_name ILIKE '%${req.query.search}%'
             OR city ILIKE '%${req.query.search}%' 
