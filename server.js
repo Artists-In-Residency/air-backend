@@ -612,25 +612,25 @@ app.get('/search', async(req, res) => {
     }
 });
 
-// app.get('/search/:pageID', async(req, res) => {
-//     try {
-//         const result = await client.query(`
-//             SELECT *
-//             FROM air_listings 
-//             WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
-//             ILIKE '%${req.query.search}%'
-//             LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
-//         `);
+app.get('/test/search/:pageID', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM air_listings 
+            WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
+            ILIKE '%${req.query.search}%'
+            LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
+        `);
 
-//         res.json(result.rows);
-//     }
-//     catch (err) {
-//         console.log(err);
-//         res.status(500).json({
-//             error: err.message || err
-//         });
-//     }
-// });
+        res.json(result.rows);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
 
 app.get('/api/me/geocode', async(req, res) => {
     const data = await request.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.search}&key=${process.env.GOOGLE_MAPS_API_KEY}`);
