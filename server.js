@@ -593,14 +593,13 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
 });
 
 //Get SEARCH all listings
-app.get('/search/:pageID', async(req, res) => {
+app.get('/search', async(req, res) => {
     try {
         const result = await client.query(`
             SELECT *
             FROM air_listings 
             WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
-            ILIKE '%${req.query.search}%'
-            LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
+            ILIKE '%${req.query.search}%';
         `);
 
         res.json(result.rows);
@@ -613,14 +612,15 @@ app.get('/search/:pageID', async(req, res) => {
     }
 });
 
-// //Some listings Get page route
-// app.get('/listings/page/:pageID', async(req, res) => {
-
+// app.get('/search/:pageID', async(req, res) => {
 //     try {
 //         const result = await client.query(`
-//             SELECT * FROM air_listings
-//             LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20
-//         `,);
+//             SELECT *
+//             FROM air_listings 
+//             WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
+//             ILIKE '%${req.query.search}%'
+//             LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
+//         `);
 
 //         res.json(result.rows);
 //     }
