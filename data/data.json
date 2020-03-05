@@ -48,7 +48,7 @@
             "art_medium": "ANY",
             "img_url": "https://artadia.org/wp-content/themes/artadia-2019/images/svg/artadia-logo.svg",
             "link_url": "https://artadia.org/ ",
-            "description": "grants in 7 large american citites",
+            "description": "grants in 7 large american cities",
             "is_grant": "TRUE",
             "lat": "39.78373",
             "long": "-100.445882"
@@ -89,7 +89,7 @@
             "long": "-73.986614"
         },
         {
-            "program_name": "creative capital",
+            "program_name": "Creative Capital",
             "address": "15 Maiden Lane, 18th Fl.",
             "city": "New York",
             "state": "NY",
@@ -131,17 +131,17 @@
             "country": "USA",
             "continent": "North America",
             "phone_num": " (605) 348-0324 ",
-            "email": "amber@firstpeoplesfund.org.",
+            "email": "amber@firstpeoplesfund.org",
             "art_medium": "ANY",
             "img_url": "https://static1.squarespace.com/static/57be24e9d1758e95b6146331/t/57d6ce33ebbd1af76fa1637f/1582932007966/?format=1500w",
             "link_url": "https://www.firstpeoplesfund.org/fellowships",
-            "description": "fellowships with to Native Americans, Native Alaskan and Native Hawaiin artists who are expanding their arts business or passing on ancestral knowledge",
+            "description": "fellowships with to Native Americans, Native Alaskan and Native Hawaiian artists who are expanding their arts business or passing on ancestral knowledge",
             "is_grant": "TRUE",
             "lat": "44.08323",
             "long": "-103.234227"
         },
         {
-            "program_name": "Fullbright ",
+            "program_name": "Fulbright",
             "address": "809 United Nations Plaza",
             "city": "New York",
             "state": "NY",
@@ -168,7 +168,7 @@
             "description": "links to many, many opportunities in US national parks. "
         },
         {
-            "program_name": "Puffin Foundaton",
+            "program_name": "Puffin Foundation",
             "address": "20 Puffin Way",
             "city": "Teaneck",
             "state": "NJ",
@@ -178,7 +178,7 @@
             "art_medium": "ANY",
             "img_url": "http://www.puffinfoundation.org/images/stories/mod_birds1.jpg",
             "link_url": "http://www.puffinfoundation.org/grants-info/prospective-applicants.html ",
-            "description": "grants",
+            "description": "Gives out grants to artists.",
             "is_grant": "TRUE",
             "lat": "40.874575",
             "long": "-74.011425"
@@ -191,7 +191,7 @@
             "zip_code": "94122",
             "country": "USA",
             "continent": "North America",
-            "email": "support.sustainableartsfoundation.org",
+            "email": "support@sustainableartsfoundation.org",
             "art_medium": "ANY",
             "link_url": "https://www.sustainableartsfoundation.org/",
             "description": "supports artists and writers with children with grant funding",
@@ -200,7 +200,7 @@
             "long": "-100.445882"
         },
         {
-            "program_name": "Arlington Arts Cener Residency",
+            "program_name": "Arlington Arts Center Residency",
             "address": "3550 Wilson Blv",
             "city": "Arlington",
             "state": "VA",
@@ -635,7 +635,7 @@
             "country": "USA",
             "continent": "North America",
             "link_url": "http://www.i-park.org/ ",
-            "description": "conneticut",
+            "description": "Foundation in Connecticut",
             "lat": "41.453155",
             "long": "-72.461198"
         },
@@ -664,7 +664,7 @@
             "continent": "North America",
             "email": "hello@nxthvn.com",
             "link_url": "https://www.nxthvn.com/#! ",
-            "description": "6 months newhaven",
+            "description": "6 months Newhaven",
             "lat": "39.78373",
             "long": "-100.445882"
         },
@@ -798,7 +798,7 @@
             "email": "info@thecreativesproject.com",
             "img_url": "https://images.squarespace-cdn.com/content/v1/54bf5924e4b084f8aab51132/1422077387843-62QRAT69X5J5MWUY8MZ6/ke17ZwdGBToddI8pDm48kAKyInotlWIhaO-Cc-lXgtJZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7Xj1nVWs2aaTtWBneO2WM-thEv_kXNMrCHvbtBH9cpqQfsCOQYVVvybLkjW5NGwWwQ/CCHP_WEBcrop.jpg?format=500w",
             "link_url": "http://www.thecreativesproject.org/programs/ ",
-            "description": "atlanta, stays of various lenghs including some 2+ years",
+            "description": "atlanta, stays of various lengths including some 2+ years",
             "lat": "33.785996",
             "long": "-84.414897"
         },
