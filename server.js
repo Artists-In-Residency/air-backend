@@ -632,11 +632,17 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
 //Get SEARCH all listings
 app.get('/search', async(req, res) => {
     try {
+        console.log(req.query.search);
         const result = await client.query(`
-            SELECT *
-            FROM air_listings 
-            WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
-            ILIKE '%${req.query.search}%';
+            SELECT * FROM air_listings 
+            WHERE id ILIKE '%${req.query.search}%'
+            OR program_name ILIKE '%${req.query.search}%'
+            OR city ILIKE '%${req.query.search}%' 
+            OR state ILIKE '%${req.query.search}%' 
+            OR zip_code ILIKE '%${req.query.search}%' 
+            OR continent ILIKE '%${req.query.search}%'
+            OR description ILIKE '%${req.query.search}%'
+            OR art_medium ILIKE '%${req.query.search}%'
         `);
 
         res.json(result.rows);
