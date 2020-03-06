@@ -20,7 +20,6 @@ app.use(express.static('public')); // server files from /public folder
 app.use(express.json()); // enable reading incoming json data
 app.use(express.urlencoded({ extended:true })); //security parsing an encoded url
 
-
 // Auth Routes
 const ensureAuth = require('./lib/auth/ensure-auth');
 const createAuthRoutes = require('./lib/auth/create-auth-routes');
@@ -472,87 +471,10 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
     catch (err) {
         console.log(err);
         res.status(500).json({
-            error: err.message || onoo
+            error: err.message || ohno
         });
     }
 });
-
-// //Will Be Admin edit any listing -- attempt 1
-// app.put('/api/me/admin/listings/:listingID', async(req, res) => {
-//     // using req.body instead of req.params or req.query (which belong to /GET requests)
-//     try {
-//         console.log(req.body);
-//         // make a new cat out of the cat that comes in req.body;
-//         const result = await client.query(`
-
-        
-//             UPDATE air_listings
-//             SET program_name = '${req.body.program_name}', 
-//             address = '${req.body.address}', 
-//             city = '${req.body.city}', 
-//             state = '${req.body.state}',
-//             zip_code = '${req.body.zip_code}',
-//             country = '${req.body.country}',
-//             continent = '${req.body.continent}',
-//             phone_num = '${req.body.phone_num}',
-//             email = '${req.body.email}',
-//             art_medium = '${req.body.art_medium}',
-//             img_url = '${req.body.img_url}',
-//             link_url = '${req.body.link_url}',
-//             description = '${req.body.description}',
-//             is_grant = '${req.body.is_grant}'
-
-//             FROM air_listings AS thing, users AS useID   
-// 			WHERE thing.id = ${req.params.listingID} AND useID.is_admin=$1;
-//         `, [true]
-//         );
-
-//         res.json(result.rows[0]); // return just the first result of our query
-//     }
-//     catch (err) {
-//         console.log(err);
-//         res.status(500).json({
-//             error: err.message || onoo
-//         });
-//     }
-// });
-
-// //Will Be Admin edit any listing -- attempt 2
-// app.put('/api/me/admin/listings/:listingID', async(req, res) => {
-//     // using req.body instead of req.params or req.query (which belong to /GET requests)
-//     try {
-//         console.log(req.body);
-//         // make a new cat out of the cat that comes in req.body;
-//         const result = await client.query(`
-//             UPDATE air_listings
-//             SET program_name = '${req.body.program_name}', 
-//             address = '${req.body.address}', 
-//             city = '${req.body.city}', 
-//             state = '${req.body.state}',
-//             zip_code = '${req.body.zip_code}',
-//             country = '${req.body.country}',
-//             continent = '${req.body.continent}',
-//             phone_num = '${req.body.phone_num}',
-//             email = '${req.body.email}',
-//             art_medium = '${req.body.art_medium}',
-//             img_url = '${req.body.img_url}',
-//             link_url = '${req.body.link_url}',
-//             description = '${req.body.description}',
-//             is_grant = '${req.body.is_grant}'
-  
-// 			WHERE id = ${req.params.listingID};
-//         `,
-//         );
-
-//         res.json(result.rows[0]); // return just the first result of our query
-//     }
-//     catch (err) {
-//         console.log(err);
-//         res.status(500).json({
-//             error: err.message || onoo
-//         });
-//     }
-// });
 
 // //Will be ADMIN edit listing
 app.put('/api/me/admin/listings/:listingID', async(req, res) => {
