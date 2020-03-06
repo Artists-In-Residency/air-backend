@@ -713,16 +713,16 @@
         {
             "program_name": "nxthvn",
             "address": "169 Henry St.",
-            "city": "Newhaven",
+            "city": "New Haven",
             "state": "CT",
             "zip_code": "6511",
             "country": "USA",
             "continent": "North America",
             "email": "hello@nxthvn.com",
             "link_url": "https://www.nxthvn.com/#!",
-            "description": "6 months Newhaven",
-            "lat": "-46.472006",
-            "long": "169.714345"
+            "description": "6 months in New Haven",
+            "lat": "41.310726",
+            "long": "-72.929916"
         },
         {
             "program_name": "Escape to Create",
@@ -3496,7 +3496,9 @@
             "art_medium": "ANY",
             "img_url": "https://www.nps.gov/common/commonspot/templates/images/logos/nps_social_image_02.jpg",
             "link_url": "https://www.nps.gov/subjects/arts/air.htm",
-            "description": "links to many, many opportunities in US national parks. "
+            "description": "links to many, many opportunities in US national parks. ",
+            "lat": "40.000000",
+            "long": "-89.000000"         	
         },
         {
             "program_name": "Big Ci",
