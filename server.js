@@ -561,6 +561,7 @@ app.get('/search', async(req, res) => {
             OR city ILIKE '%${req.query.search}%' 
             OR state ILIKE '%${req.query.search}%' 
             OR zip_code ILIKE '%${req.query.search}%' 
+            OR country ILIKE '%${req.query.search}%'
             OR continent ILIKE '%${req.query.search}%'
             OR description ILIKE '%${req.query.search}%'
             OR art_medium ILIKE '%${req.query.search}%'
