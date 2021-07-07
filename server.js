@@ -1,3 +1,5 @@
+// this file is getting a bit hefty. you might want to look into the express Router constructor to modularize this code https://expressjs.com/en/guide/routing.html#express-router
+
 // Load Environment Variables from the .env file
 require('dotenv').config();
 
@@ -50,7 +52,7 @@ const authRoutes = createAuthRoutes({
 // setup authentication routes
 app.use('/api/auth', authRoutes);
 
-// everything that starts with "/api" below here requires an auth token!
+// everything that starts with "/api/me" below here requires an auth token!
 app.use('/api/me', ensureAuth);
 
 //////////////
@@ -407,7 +409,24 @@ app.post('/api/me/listings', async(req, res) => {
         } = req.body;
 
         const newListing = await client.query(`
-            INSERT INTO air_listings (program_name, address, city, state, zip_code, country, continent, phone_num, email, art_medium, img_url, link_url, description, user_id, is_grant, lat, long)
+            INSERT INTO air_listings (
+                program_name,
+                address,
+                city,
+                state,
+                zip_code,
+                country,
+                continent,
+                phone_num,
+                email,
+                art_medium,
+                img_url,
+                link_url,
+                description,
+                user_id,
+                is_grant,
+                lat,
+                long)
             values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
             returning *
         `, [
@@ -471,7 +490,7 @@ app.put('/api/me/listings/:listingID', async(req, res) => {
     catch (err) {
         console.log(err);
         res.status(500).json({
-            error: err.message || ohno
+            error: err.message || 'ohno'
         });
     }
 });
@@ -555,6 +574,7 @@ app.delete('/api/me/listings/:listingID', async(req, res) => {
 app.get('/search', async(req, res) => {
     try {
         console.log(req.query.search);
+        // seems like if the pipe syntax in the next endpoint works, your should use that here
         const result = await client.query(`
             SELECT * FROM air_listings 
             WHERE program_name ILIKE '%${req.query.search}%'
@@ -578,10 +598,19 @@ app.get('/search', async(req, res) => {
 
 app.get('/test/search/:pageID', async(req, res) => {
     try {
+        // so coooooool
         const result = await client.query(`
             SELECT *
             FROM air_listings 
-            WHERE id || program_name || city || state || zip_code || country || continent || description || art_medium
+            WHERE id ||
+            program_name ||
+            city ||
+            state ||
+            zip_code ||
+            country ||
+            continent ||
+            description ||
+            art_medium
             ILIKE '%${req.query.search}%'
             LIMIT 20 OFFSET (${req.params.pageID} - 1) * 20;
         `);
